@@ -1,103 +1,106 @@
-import Image from "next/image";
-
+import { ArrowDown, ArrowRight, Search } from "lucide-react";
+import classes from "@/app/_styles/home-page.module.css";
+import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+import MarketInsightsSlider from "./_components/Carousal";
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <div className={cn("pt-36 m-auto h-[95dvh]", classes["heroImage"])}>
+        <main className="flex flex-col items-center px-4 pt-5 pb-64 w-3/4 mx-auto relative z-10 gap-44 h-full">
+          <div className="inline-flex flex-col gap-5 w-full">
+            <h1 className="text-4xl md:text-6xl font-extrabold">
+              <span className="text-[#00e5c0] font-extrabold">Invest</span> with{" "}
+              <span className="text-[#00e5c0] font-extrabold">Purpose</span>
+            </h1>
+            <button className="inline-flex max-w-max items-center gap-2 border border-[#00e5c0] text-[#00e5c0] hover:bg-[#00e5c0]/10 px-6 py-2 rounded-full transition-colors">
+              Get Started
+              <ArrowRight size={18} />
+            </button>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+          <div className="relative w-full max-w-md">
+            <Input
+              type="text"
+              placeholder="Search topics like 'How to start investing' or 'Mutual Funds'..."
+              className="rounded-full h-12 focus-visible:ring-[#00e5c0]/50 focus-visible:ring-2"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <Search
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+              size={18}
+            />
+          </div>
+          <button className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-background p-3 rounded-full border-3 border-foreground z-20 hover:bg-gray-900 transition-colors cursor-pointer">
+            <ArrowDown className="text-[#00e5c0]" size={24} />
+          </button>
+        </main>
+      </div>
+      <div className="m-auto bg-foreground hero-image">
+        <section className="py-20 px-4 max-w-4/6 m-auto">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              The Fincelerate Way
+            </h2>
+            <p className="text-gray-600 text-lg mb-10">
+              From Discovery to Growth, We've Got You Covered.
+            </p>
+
+            <div>
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-foreground border-3 border-primary rounded-full flex items-center justify-center text-background font-bold text-lg">
+                    1
+                  </div>
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    Discover
+                  </h3>
+                  <p className="text-gray-600">
+                    Explore tailored opportunities and resources that guide your
+                    journey.
+                  </p>
+                </div>
+              </div>
+              <div className="w-px h-20 bg-gray-300 ml-6 mb-2"></div>
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-foreground border-3 border-primary rounded-full flex items-center justify-center text-background font-bold text-lg">
+                    2
+                  </div>
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    Understand
+                  </h3>
+                  <p className="text-gray-600">
+                    Learn the fundamentals and gain insights to invest
+                    confidently.
+                  </p>
+                </div>
+              </div>
+              <div className="w-px h-20 bg-gray-300 ml-6 mb-2"></div>
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-foreground border-3 border-primary rounded-full flex items-center justify-center text-background font-bold text-lg">
+                    3
+                  </div>
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    Grow
+                  </h3>
+                  <p className="text-gray-600">
+                    Take action and watch your investments grow toward your
+                    goals.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <MarketInsightsSlider />
+    </>
   );
 }
