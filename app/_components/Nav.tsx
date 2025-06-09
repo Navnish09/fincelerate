@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,9 +9,8 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { CircleUserRound, Lightbulb, PiggyBank } from "lucide-react";
-import { auth0 } from "@/lib/auth";
 import { useUser } from "@auth0/nextjs-auth0";
+import { CircleUserRound, Lightbulb, PiggyBank } from "lucide-react";
 
 export const Navigation = () => {
   const { user } = useUser();
