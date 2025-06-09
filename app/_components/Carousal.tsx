@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const slides = [
   {
@@ -68,12 +69,12 @@ export default function MarketInsightsSlider() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
             Explore Our Hub of Market Insights
           </h2>
           <a
             href="#"
-            className="text-[#8800ff] hover:text-[#6600cc] font-medium flex items-center gap-1 transition-colors"
+            className="text-[#8800ff] hover:text-[#6600cc] font-extrabold underline flex items-center gap-1 transition-colors"
           >
             View All
             <ChevronRight size={16} />
@@ -82,22 +83,66 @@ export default function MarketInsightsSlider() {
 
         {/* Slider Container */}
         <div className="bg-white rounded-2xl p-8 shadow-sm">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
             {/* Content Side */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900">
-                {slides[currentSlide].title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {slides[currentSlide].description}
-              </p>
-              <a
-                href={slides[currentSlide].link}
-                className="inline-flex items-center text-[#8800ff] hover:text-[#6600cc] font-medium transition-colors"
-              >
-                Learn More
-                <ChevronRight size={16} className="ml-1" />
-              </a>
+            <div className="flex flex-col justify-between h-full">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  {slides[currentSlide].title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {slides[currentSlide].description}
+                </p>
+                <a
+                  href={slides[currentSlide].link}
+                  className="inline-flex items-center text-[#8800ff] hover:text-[#6600cc] font-medium transition-colors"
+                >
+                  Learn More
+                  <ChevronRight size={16} className="ml-1" />
+                </a>
+              </div>
+              {/* Navigation Controls */}
+              <div className="flex items-center justify-between mt-8">
+                {/* Pagination Dots */}
+                <div className="flex items-center gap-2">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`h-1 rounded-full transition-all duration-300 ${
+                        index === currentSlide
+                          ? "w-15 bg-[#8800ff]"
+                          : "w-15 bg-gray-300 hover:bg-gray-400"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Arrow Navigation */}
+                <div className="flex items-center gap-2">
+                  <Button
+                    onClick={prevSlide}
+                    variant={"outline"}
+                    size={"icon"}
+                    className="p-2  bg-foreground text-background  rounded-full border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                    aria-label="Previous slide"
+                    disabled={!currentSlide}
+                  >
+                    <ChevronLeft size={20} className="text-gray-600" />
+                  </Button>
+                  <Button
+                    onClick={nextSlide}
+                    variant={"outline"}
+                    size={"icon"}
+                    className="p-2  bg-foreground text-background  rounded-full border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                    aria-label="Next slide"
+                    disabled={currentSlide === slides.length - 1}
+                  >
+                    <ChevronRight size={20} className="text-gray-600" />
+                  </Button>
+                </div>
+              </div>
             </div>
 
             {/* Image Side */}
@@ -114,43 +159,6 @@ export default function MarketInsightsSlider() {
                   <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between mt-8">
-            {/* Pagination Dots */}
-            <div className="flex items-center gap-3">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "w-8 bg-[#8800ff]"
-                      : "w-2 bg-gray-300 hover:bg-gray-400"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Arrow Navigation */}
-            <div className="flex items-center gap-2">
-              <button
-                onClick={prevSlide}
-                className="p-2 rounded-full border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft size={20} className="text-gray-600" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-2 rounded-full border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
-                aria-label="Next slide"
-              >
-                <ChevronRight size={20} className="text-gray-600" />
-              </button>
             </div>
           </div>
         </div>

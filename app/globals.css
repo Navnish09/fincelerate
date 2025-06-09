@@ -38,10 +38,14 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-helper: var(--helper);
+  --color-helper-foreground: var(--helper-foreground);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -85,6 +89,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --helper: hsla(150 100% 75% 1);
+  --helper-foreground: oklch(0.985 0 0);
 }
 /* 
 ---break--- */
@@ -120,6 +126,34 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --helper: hsla(150, 100%, 75%, 1);
+  --helper-foreground: oklch(0.985 0 0);
+
+  --animate-marquee: marquee var(--duration, 40s) linear infinite;
+  --animate-marquee-slow: marquee 60s linear infinite;
+  --animate-marquee-fast: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: var(--animate-marquee);
+}
+
+.animate-marquee-slow {
+  animation: var(--animate-marquee-slow);
+}
+
+.animate-marquee-fast {
+  animation: var(--animate-marquee-fast);
 }
 
 /* hide scroll bar */

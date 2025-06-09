@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,8 +10,11 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { CircleUserRound, Lightbulb, PiggyBank } from "lucide-react";
+import { auth0 } from "@/lib/auth";
+import { useUser } from "@auth0/nextjs-auth0";
 
 export const Navigation = () => {
+  const { user } = useUser();
   return (
     <div className="bg-card/80 py-3 px-8 w-3/4 m-auto rounded-4xl absolute left-2/4 -translate-x-2/4 top-10 z-20">
       <div className="flex gap-5">
@@ -56,12 +60,19 @@ export const Navigation = () => {
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <Link href="#">
-                <span className="flex gap-2 items-center underline">
-                  <CircleUserRound color="white" />
-                  Sign In
-                </span>
-              </Link>
+              {user ? (
+                <div className="flex flex-nowrap gap-2 items-center underline">
+                  <CircleUserRound color="white" size={24} />
+                  {user?.name}
+                </div>
+              ) : (
+                <Link href={"/auth/login"}>
+                  <span className="flex gap-2 items-center underline">
+                    <CircleUserRound color="white" />
+                    Sign In
+                  </span>
+                </Link>
+              )}
             </NavigationMenuLink>
           </div>
         </NavigationMenu>
