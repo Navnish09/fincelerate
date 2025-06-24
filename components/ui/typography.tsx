@@ -68,7 +68,7 @@ export function TypographyP({
   className,
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}>
+    <p className={cn("leading-7", className)}>
       {children}
     </p>
   );
