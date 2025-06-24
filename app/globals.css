@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
+@plugin "flowbite/plugin";
 /* 
 ---break--- */
 @custom-variant dark (&:is(.dark *));
@@ -32,6 +34,8 @@
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
+  --color-secondary2: var(--secondary2);
+  --color-secondary2-foreground: var(--secondary2-foreground);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
@@ -40,6 +44,10 @@
   --color-card: var(--card);
   --color-helper: var(--helper);
   --color-helper-foreground: var(--helper-foreground);
+  --color-helper2: var(--helper2);
+  --color-helper2-foreground: var(--helper2-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -68,6 +76,8 @@
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.8 0.15 70);
   --secondary-foreground: oklch(0 0 0);
+  --secondary2: hsla(46, 62%, 68%, 1);
+  --secondary2-foreground: oklch(0.145 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
@@ -91,6 +101,10 @@
   --sidebar-ring: oklch(0.708 0 0);
   --helper: hsla(150 100% 75% 1);
   --helper-foreground: oklch(0.985 0 0);
+  --helper2: hsla(178, 100%, 54%, 1);
+  --helper2-foreground: oklch(0.985 0 0);
+  --success: hsla(151, 100%, 72%, 1);
+  --success-foreground: oklch(0.145 0 0);
 }
 /* 
 ---break--- */
@@ -105,6 +119,8 @@
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.8 0.15 70);
   --secondary-foreground: oklch(0 0 0);
+  --secondary2: hsla(46, 62%, 68%, 1);
+  --secondary2-foreground: oklch(0.145 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
@@ -129,6 +145,10 @@
 
   --helper: hsla(150, 100%, 75%, 1);
   --helper-foreground: oklch(0.985 0 0);
+  --helper2: hsla(178, 100%, 54%, 1);
+  --helper2-foreground: oklch(0.985 0 0);
+   --success: hsla(151, 100%, 72%, 1);
+  --success-foreground: oklch(0.145 0 0);
 
   --animate-marquee: marquee var(--duration, 40s) linear infinite;
   --animate-marquee-slow: marquee 60s linear infinite;
@@ -164,7 +184,7 @@
 ---break--- */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;

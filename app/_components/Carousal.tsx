@@ -36,7 +36,7 @@ const slides = [
     title: "Real Estate Investment Strategies",
     description:
       "Explore different real estate investment approaches and learn how to build wealth through property investments.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://modii.org/wp-content/uploads/2020/12/random.png",
     link: "#",
   },
   {
@@ -44,7 +44,8 @@ const slides = [
     title: "Retirement Planning Essentials",
     description:
       "Essential strategies for planning your retirement and ensuring financial security in your golden years.",
-    image: "/placeholder.svg?height=300&width=400",
+    image:
+      "https://cdn.pixabay.com/photo/2021/12/12/20/00/play-6865967_640.jpg",
     link: "#",
   },
 ];
@@ -68,13 +69,13 @@ export default function MarketInsightsSlider() {
     <section className="bg-gray-50 py-16 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center gap-2 flex-wrap justify-between mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
             Explore Our Hub of Market Insights
           </h2>
           <a
             href="#"
-            className="text-[#8800ff] hover:text-[#6600cc] font-extrabold underline flex items-center gap-1 transition-colors"
+            className="text-primary hover:text-primary/50 font-extrabold underline flex items-center gap-1 transition-colors"
           >
             View All
             <ChevronRight size={16} />
@@ -83,7 +84,7 @@ export default function MarketInsightsSlider() {
 
         {/* Slider Container */}
         <div className="bg-white rounded-2xl p-8 shadow-sm">
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="flex flex-col-reverse md:flex-row gap-8 items-start">
             {/* Content Side */}
             <div className="flex flex-col justify-between h-full">
               <div className="space-y-6">
@@ -102,17 +103,17 @@ export default function MarketInsightsSlider() {
                 </a>
               </div>
               {/* Navigation Controls */}
-              <div className="flex items-center justify-between mt-8">
+              <div className="flex items-center justify-between mt-8 gap-5 md:flex-row flex-col">
                 {/* Pagination Dots */}
                 <div className="flex items-center gap-2">
                   {slides.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
-                      className={`h-1 rounded-full transition-all duration-300 ${
+                      className={`h-1 rounded-full transition-all duration-300 w-10 ${
                         index === currentSlide
-                          ? "w-15 bg-[#8800ff]"
-                          : "w-15 bg-gray-300 hover:bg-gray-400"
+                          ? "bg-[#8800ff]"
+                          : "bg-gray-300 hover:bg-gray-400"
                       }`}
                       aria-label={`Go to slide ${index + 1}`}
                     />

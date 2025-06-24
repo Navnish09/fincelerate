@@ -1,21 +1,69 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
-  return (
-    <input
-      type={type}
-      data-slot="input"
-      className={cn(
-        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-        className
-      )}
-      {...props}
-    />
-  )
+export interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
+  size?: "sm" | "lg";
+  label?: string;
 }
 
-export { Input }
+const inputVariants = cva(
+  "bg-transparent flex-1 text-input-foreground text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+  {
+    variants: {
+      size: {
+        sm: "py-2",
+        lg: "py-3",
+      },
+    },
+    defaultVariants: {
+      size: "sm",
+    },
+  }
+);
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, size, type, startIcon, endIcon, id, label, ...props }, ref) => {
+    return (
+      <div className="flex flex-col gap-2">
+        {label && (
+          <label htmlFor={id} className="text-sm">
+            {label}
+          </label>
+        )}
+        <div
+          className={cn(
+            "w-full flex rounded-md border bg-input/50 px-3 text-input-foreground text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 gap-2 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
+            className
+          )}
+        >
+          {startIcon && (
+            <div className="flex items-center justify-center">{startIcon}</div>
+          )}
+          <input
+            autoComplete="off"
+            {...(id ? { id } : {})}
+            type={type}
+            className={cn(
+              inputVariants({ size }),
+              className,
+              "border-none outline-none focus-visible:ring-0"
+            )}
+            ref={ref}
+            {...props}
+          />
+          {endIcon && (
+            <div className="flex items-center justify-center">{endIcon}</div>
+          )}
+        </div>
+      </div>
+    );
+  }
+);
+Input.displayName = "Input";
+
+export { Input };

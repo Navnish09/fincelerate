@@ -1,0 +1,7 @@
+.exploreFundsHero {
+  background-color: var(--foreground);
+  background-image: url('/funds-bg.png');
+  background-size: cover;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+}
