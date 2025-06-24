@@ -27,13 +27,12 @@ import { useState } from "react";
 import classes from "@/app/_styles/explore-funds.module.css";
 import {
   TypographyH1,
-  TypographyH4,
   TypographyLarge,
   TypographyP,
+  TypographySmall
 } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import FundComparison from "../_components/CompareFunds";
 
 const fundCategories = [
   "ETF or Index",
@@ -97,7 +96,6 @@ export default function Component() {
   const [activeTab, setActiveTab] = useState("Equity");
   const [selectedFunds, setSelectedFunds] = useState<number[]>([]);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const [showComparison, setShowComparison] = useState(false);
   const [selectedPeriods, setSelectedPeriods] = useState<{
     [key: number]: string;
   }>({});
@@ -185,72 +183,68 @@ export default function Component() {
             </TypographyP>
 
             {/* Hero Navigation Tabs */}
-            {!showComparison && (
-              <div className="flex justify-center gap-8">
-                <Button
-                  variant={"link"}
-                  className={`pb-2 text-lg font-medium transition-colors relative text-yellow-400 underline `}
-                >
-                  <Link href={"/funds"}>All Funds</Link>
-                </Button>
-                <Button
-                  variant={"link"}
-                  className={`pb-2 text-lg font-medium transition-colors relative text-white hover:text-yellow-300`}
-                >
-                  <Link href={"/funds/nfo"}>NFO</Link>
-                </Button>
-              </div>
-            )}
+            <div className="flex justify-center gap-8">
+              <Button
+                variant={"link"}
+                className={`pb-2 text-lg font-medium transition-colors relative text-yellow-400 underline `}
+              >
+                <Link href={"/funds"}>All Funds</Link>
+              </Button>
+              <Button
+                variant={"link"}
+                className={`pb-2 text-lg font-medium transition-colors relative text-white hover:text-yellow-300`}
+              >
+                <Link href={"/funds/nfo"}>NFO</Link>
+              </Button>
+            </div>
           </div>
           {/* Fund Type Navigation Tabs */}
-          {!showComparison && (
-            <div className="border-b border-slate-700 bg-slate-950/30">
-              <div className="flex items-center px-4 py-4">
-                {/* Mobile Sidebar Trigger */}
-                <Sheet
-                  open={isMobileSidebarOpen}
-                  onOpenChange={setIsMobileSidebarOpen}
-                >
-                  <SheetTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="lg:hidden mr-3 bg-slate-800 hover:bg-slate-700 flex-shrink-0"
-                    >
-                      <Menu className="h-5 w-5" />
-                    </Button>
-                  </SheetTrigger>
-                  <SheetContent
-                    side="left"
-                    className="w-64 bg-[#12151E] border-slate-700 p-4"
+          <div className="border-b border-slate-700 bg-slate-950/30">
+            <div className="flex items-center px-4 py-4">
+              {/* Mobile Sidebar Trigger */}
+              <Sheet
+                open={isMobileSidebarOpen}
+                onOpenChange={setIsMobileSidebarOpen}
+              >
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="lg:hidden mr-3 bg-slate-800 hover:bg-slate-700 flex-shrink-0"
                   >
-                    <SidebarContent />
-                  </SheetContent>
-                </Sheet>
+                    <Menu className="h-5 w-5" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent
+                  side="left"
+                  className="w-64 bg-[#12151E] border-slate-700 p-4"
+                >
+                  <SidebarContent />
+                </SheetContent>
+              </Sheet>
 
-                {/* Scrollable Tabs Container */}
+              {/* Scrollable Tabs Container */}
 
-                <div className="flex-1 overflow-x-auto">
-                  <div className="flex items-center gap-1 min-w-max lg:justify-center">
-                    {tabs.map((tab) => (
-                      <Button
-                        key={tab}
-                        variant={activeTab === tab ? "default" : "ghost"}
-                        className={`px-4 lg:px-6 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${
-                          activeTab === tab
-                            ? ""
-                            : "text-slate-300 hover:text-white hover:bg-slate-800"
-                        }`}
-                        onClick={() => setActiveTab(tab)}
-                      >
-                        {tab}
-                      </Button>
-                    ))}
-                  </div>
+              <div className="flex-1 overflow-x-auto">
+                <div className="flex items-center gap-1 min-w-max lg:justify-center">
+                  {tabs.map((tab) => (
+                    <Button
+                      key={tab}
+                      variant={activeTab === tab ? "default" : "ghost"}
+                      className={`px-4 lg:px-6 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${
+                        activeTab === tab
+                          ? ""
+                          : "text-slate-300 hover:text-white hover:bg-slate-800"
+                      }`}
+                      onClick={() => setActiveTab(tab)}
+                    >
+                      {tab}
+                    </Button>
+                  ))}
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
 
         <div className="flex relative">
@@ -267,7 +261,7 @@ export default function Component() {
                 <Input
                   placeholder="Search here for Fund Name"
                   className="bg-slate-950"
-                  startIcon={<Search className="text-slate-400 w-4 h-4" />}
+                  startIcon={<Search className="text-muted-foreground w-4 h-4" />}
                 />
               </div>
               <Select>
@@ -290,21 +284,6 @@ export default function Component() {
               </Select>
             </div>
 
-            {/* Selected AMCs Header */}
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-2">
-                <TypographyH4 className=" font-semibold text-helper2">
-                  Your Selected AMCs (4)
-                </TypographyH4>
-                <Button
-                  variant="ghost"
-                  className="text-slate-400 hover:text-white p-0"
-                >
-                  Clear Selection
-                </Button>
-              </div>
-            </div>
-
             {/* Fund Cards */}
             <div className="flex flex-col gap-4">
               {fundData.map((fund, index) => (
@@ -323,17 +302,17 @@ export default function Component() {
                           <div className="flex items-start gap-4 mb-4">
                             <div className="w-12 h-12 bg-slate-600 rounded-full flex items-center justify-center flex-shrink-0"></div>
                             <div className="min-w-0 flex-1">
-                              <h3 className="font-semibold text-white text-lg mb-1 leading-tight">
+                              <TypographyLarge className="mb-1 leading-tight">
                                 {fund.name}
-                              </h3>
-                              <p className="text-sm text-slate-400">
+                              </TypographyLarge>
+                              <TypographySmall className="text-muted-foreground">
                                 {fund.company}
-                              </p>
+                              </TypographySmall>
                             </div>
                           </div>
 
                           {/* Calculator below fund info */}
-                          <div className="flex items-center gap-2 text-slate-400 hover:text-white cursor-pointer transition-colors ml-16">
+                          <div className="flex items-center gap-2 text-muted-foreground hover:text-white cursor-pointer transition-colors ml-16">
                             <Calculator className="w-4 h-4 text-secondary2" />
                             <span className="text-sm font-medium">
                               Calculator
@@ -343,10 +322,10 @@ export default function Component() {
                         </div>
 
                         {/* Financial Data */}
-                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 lg:flex-shrink-0">
+                        <div className="flex gap-4 sm:gap-8 justify-between md:justify-start lg:flex-shrink-0">
                           {/* NAV */}
                           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                            <div className="text-sm text-slate-400 mb-2 font-medium">
+                            <div className="text-sm text-muted-foreground mb-2 font-medium">
                               NAV
                             </div>
                             <div className="text-helper font-bold text-xl mb-1">
@@ -359,10 +338,10 @@ export default function Component() {
 
                           {/* Returns with Period Dropdown */}
                           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                            <div className="text-sm text-slate-400 mb-2 font-medium">
+                            <div className="text-sm text-muted-foreground mb-2 font-medium">
                               Per Annum
                             </div>
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-5">
                               <div className="text-helper font-bold text-xl">
                                 {fund.returns}
                               </div>
@@ -389,7 +368,7 @@ export default function Component() {
                             <Button
                               size="icon"
                               variant="ghost"
-                              className="text-slate-400 hover:text-white hover:bg-slate-700"
+                              className="text-muted-foreground hover:text-white hover:bg-slate-700"
                             >
                               <ShoppingCart className="w-5 h-5" />
                             </Button>
@@ -416,7 +395,7 @@ export default function Component() {
                           />
                           <label
                             htmlFor={`compare-${fund.id}`}
-                            className="text-sm text-slate-400 cursor-pointer hover:text-white transition-colors"
+                            className="text-sm text-muted-foreground cursor-pointer hover:text-white transition-colors"
                           >
                             Add to Compare
                           </label>
@@ -427,7 +406,7 @@ export default function Component() {
                           <Button
                             size="icon"
                             variant="ghost"
-                            className="text-slate-400 hover:text-white hover:bg-slate-700 flex-shrink-0"
+                            className="text-muted-foreground hover:text-white hover:bg-slate-700 flex-shrink-0"
                           >
                             <ShoppingCart className="w-5 h-5" />
                           </Button>
@@ -468,7 +447,7 @@ export default function Component() {
         </div>
         {/* Fund Comparison Section */}
         {/* Sticky Fund Comparison Section */}
-        {!!selectedFunds.length && !showComparison && (
+        {!!selectedFunds.length && (
           <div className="sticky bottom-0 left-0 right-0 bg-[#12151E] shadow-lg z-50 transition-all duration-300 ease-in-out">
             {/* Toggle Header */}
             <div className="flex items-center justify-between px-4 lg:px-6 py-3 border-b ">
@@ -484,7 +463,7 @@ export default function Component() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsComparisonExpanded(!isComparisonExpanded)}
-                className="text-slate-400 hover:text-white hover:bg-slate-700 flex items-center gap-2"
+                className="text-muted-foreground hover:text-white hover:bg-slate-700 flex items-center gap-2"
               >
                 {isComparisonExpanded ? (
                   <>
@@ -525,7 +504,7 @@ export default function Component() {
                           <Button
                             size="sm"
                             variant="ghost"
-                            className="w-5 h-5 p-0 text-slate-400 hover:text-white hover:bg-slate-500 rounded-full"
+                            className="w-5 h-5 p-0 text-muted-foreground hover:text-white hover:bg-slate-500 rounded-full"
                             onClick={() => removeFundFromComparison(fund.id)}
                           >
                             <X className="w-3 h-3" />
@@ -540,14 +519,8 @@ export default function Component() {
                     <Button
                       className="rounded-full"
                       disabled={selectedFunds.length < 2}
-                      onClick={() => {
-                        setShowComparison(true);
-
-                        // Scroll to top
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
                     >
-                      Compare
+                      <Link href={'funds/compare'}>Compare</Link>
                     </Button>
                     <Button
                       variant="outline"
@@ -563,16 +536,6 @@ export default function Component() {
           </div>
         )}
       </div>
-      {showComparison && (
-        <div className="absolute h-full w-full top-0 bottom-0 bg-[#060A20F2]">
-          <FundComparison
-            onClose={() => {
-              setShowComparison(false);
-              setIsComparisonExpanded(true);
-            }}
-          />
-        </div>
-      )}
     </>
   );
 }
