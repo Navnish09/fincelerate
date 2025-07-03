@@ -13,22 +13,17 @@ import {
   TypographyH1,
   TypographyH2,
   TypographyH3,
-  TypographyH4
+  TypographyH4,
 } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
-import {
-  ArrowDown,
-  ArrowRight,
-  CalendarClock,
-  Search
-} from "lucide-react";
+import { ArrowDown, ArrowRight, CalendarClock, Search } from "lucide-react";
 import Image from "next/image";
 import MarketInsightsSlider from "./_components/Carousal";
 import { Marquee } from "./_components/Marquee";
 export default function Home() {
   return (
     <>
-      <div className={cn("pt-36 m-auto h-[95dvh]", classes[".heroImage"])}>
+      <div className={cn("pt-36 m-auto h-[95dvh]", classes.heroImage)}>
         <main className="flex flex-col items-center px-4 pt-5 pb-64 w-11/12 md:w-3/4 mx-auto relative z-10 gap-44 h-full">
           <div className="inline-flex flex-col gap-5 w-full">
             <h1 className="text-4xl md:text-6xl font-extrabold">
@@ -187,7 +182,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
     </>
   );
 }

@@ -29,7 +29,7 @@ import {
   TypographyH1,
   TypographyLarge,
   TypographyP,
-  TypographySmall
+  TypographySmall,
 } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -261,7 +261,9 @@ export default function Component() {
                 <Input
                   placeholder="Search here for Fund Name"
                   className="bg-slate-950"
-                  startIcon={<Search className="text-muted-foreground w-4 h-4" />}
+                  startIcon={
+                    <Search className="text-muted-foreground w-4 h-4" />
+                  }
                 />
               </div>
               <Select>
@@ -520,7 +522,7 @@ export default function Component() {
                       className="rounded-full"
                       disabled={selectedFunds.length < 2}
                     >
-                      <Link href={'funds/compare'}>Compare</Link>
+                      <Link href={"funds/compare"}>Compare</Link>
                     </Button>
                     <Button
                       variant="outline"
