@@ -23,7 +23,7 @@ export const Navigation = () => {
   const { user } = useUser();
   const [openMenu, setOpenMenu] = useState(false);
   return (
-    <div className="bg-card/80  w-11/12 md:w-3/4 m-auto rounded-4xl absolute left-2/4 -translate-x-2/4 top-10 z-20">
+    <div className="bg-card/80 w-11/12 md:w-3/4 m-auto rounded-4xl absolute left-2/4 -translate-x-2/4 top-8 z-20">
       <div className="relative py-3 px-8 w-full">
         <div className="flex gap-5 ">
           <Link href={"/"}>

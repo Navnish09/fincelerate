@@ -104,7 +104,7 @@ export function TypographySmall({
   className,
 }: React.HTMLAttributes<HTMLSpanElement>) {
   return (
-    <small className={cn("text-sm leading-none font-medium", className)}>
+    <small className={cn("text-sm font-medium", className)}>
       {children}
     </small>
   );

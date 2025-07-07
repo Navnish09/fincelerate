@@ -29,7 +29,7 @@ import {
   TypographyH1,
   TypographyLarge,
   TypographyP,
-  TypographySmall
+  TypographySmall,
 } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -261,7 +261,9 @@ export default function Component() {
                 <Input
                   placeholder="Search here for Fund Name"
                   className="bg-slate-950"
-                  startIcon={<Search className="text-muted-foreground w-4 h-4" />}
+                  startIcon={
+                    <Search className="text-muted-foreground w-4 h-4" />
+                  }
                 />
               </div>
               <Select>
@@ -376,7 +378,7 @@ export default function Component() {
                               variant={"outline"}
                               className="rounded-full border-success font-semibold shadow-lg hover:shadow-xl transition-all bg-gray-950/20"
                             >
-                              Invest now
+                              <Link href={"/funds/details"}>Invest now</Link>
                               <ArrowRight />
                             </Button>
                           </div>
@@ -408,13 +410,15 @@ export default function Component() {
                             variant="ghost"
                             className="text-muted-foreground hover:text-white hover:bg-slate-700 flex-shrink-0"
                           >
-                            <ShoppingCart className="w-5 h-5" />
+                            <Link href={"/cart"}>
+                              <ShoppingCart className="w-5 h-5" />
+                            </Link>
                           </Button>
                           <Button
                             variant={"outline"}
                             className="flex-1 text-white rounded-full border-green-400 font-semibold px-8 py-3 shadow-lg hover:shadow-xl transition-all bg-gray-950/20"
                           >
-                            Invest Now
+                            <Link href={"/funds/details"}>Invest now</Link>
                             <ArrowRight />
                           </Button>
                         </div>
@@ -520,7 +524,7 @@ export default function Component() {
                       className="rounded-full"
                       disabled={selectedFunds.length < 2}
                     >
-                      <Link href={'funds/compare'}>Compare</Link>
+                      <Link href={"funds/compare"}>Compare</Link>
                     </Button>
                     <Button
                       variant="outline"
