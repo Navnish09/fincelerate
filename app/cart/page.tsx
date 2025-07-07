@@ -42,7 +42,7 @@ interface MobileInvestmentSummaryProps {
   onContinueToInvest: () => void;
 }
 
-export function MobileInvestmentSummary({
+function MobileInvestmentSummary({
   funds,
   totalAmount,
   isLoading,

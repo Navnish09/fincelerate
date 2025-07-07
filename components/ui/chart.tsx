@@ -80,7 +80,7 @@ export const EChart = ({
       window.removeEventListener("resize", resizeChart);
       observer.disconnect();
     };
-  }, [theme]);
+  }, [theme, parentRef]);
 
   useEffect(() => {
     // Using getInstanceByDom to repaint the container with new option on a re-render
@@ -115,7 +115,7 @@ export const EChart = ({
       }
       onLoad?.(chart);
     }
-  }, [option, settings, theme, dataset, events]);
+  }, [option, settings, theme, dataset, events, onLoad, resizeChart]);
 
   return (
     <div ref={chartRef} id="echart_container" className="h-full w-full"></div>
