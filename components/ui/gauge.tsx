@@ -21,7 +21,7 @@ export const GaugeChart = ({}) => {
               {
                 value: 10,
                 valueConfig: {
-                  formatTextValue: () => `Low`,
+                  formatTextValue: () => ``,
                   style: {
                     fontSize: "10px",
                     fontWeight: "bold",
@@ -33,7 +33,7 @@ export const GaugeChart = ({}) => {
               {
                 value: 30,
                 valueConfig: {
-                  formatTextValue: () => `Low moderate`,
+                  formatTextValue: () => ``,
                   style: {
                     fontSize: "10px",
                     fontWeight: "bolder",
@@ -51,7 +51,7 @@ export const GaugeChart = ({}) => {
                     transform:
                       "translateY(28px) translateX(5px) rotate(-15deg)",
                   },
-                  formatTextValue: () => `Moderate`,
+                  formatTextValue: () => ``,
                 },
               },
               {
@@ -63,7 +63,7 @@ export const GaugeChart = ({}) => {
                     transform:
                       "translateY(28px) translateX(-8px) rotate(15deg)",
                   },
-                  formatTextValue: () => `Moderate high`,
+                  formatTextValue: () => ``,
                 },
               },
               {
@@ -75,7 +75,7 @@ export const GaugeChart = ({}) => {
                     transform:
                       "translateY(11px) translateX(-28px) rotate(46deg)",
                   },
-                  formatTextValue: () => `High`,
+                  formatTextValue: () => ``,
                 },
               },
               {
@@ -87,7 +87,7 @@ export const GaugeChart = ({}) => {
                     transform:
                       "translateY(-16px) translateX(-34px) rotate(75deg)",
                   },
-                  formatTextValue: () => `Very High`,
+                  formatTextValue: () => ``,
                 },
               },
             ],

@@ -378,7 +378,7 @@ export default function Component() {
                               variant={"outline"}
                               className="rounded-full border-success font-semibold shadow-lg hover:shadow-xl transition-all bg-gray-950/20"
                             >
-                              Invest now
+                              <Link href={"/funds/details"}>Invest now</Link>
                               <ArrowRight />
                             </Button>
                           </div>
@@ -410,13 +410,15 @@ export default function Component() {
                             variant="ghost"
                             className="text-muted-foreground hover:text-white hover:bg-slate-700 flex-shrink-0"
                           >
-                            <ShoppingCart className="w-5 h-5" />
+                            <Link href={"/cart"}>
+                              <ShoppingCart className="w-5 h-5" />
+                            </Link>
                           </Button>
                           <Button
                             variant={"outline"}
                             className="flex-1 text-white rounded-full border-green-400 font-semibold px-8 py-3 shadow-lg hover:shadow-xl transition-all bg-gray-950/20"
                           >
-                            Invest Now
+                            <Link href={"/funds/details"}>Invest now</Link>
                             <ArrowRight />
                           </Button>
                         </div>

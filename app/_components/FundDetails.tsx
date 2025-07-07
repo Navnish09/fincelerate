@@ -44,8 +44,8 @@ export const FundDetails = () => {
     // For this example, we just log it to the console
   }
   return (
-    <div className="bg-card/30 pt-45 pb-10">
-      <div className="max-w-10/12 mx-auto">
+    <div className="bg-card/30 pt-40 md:pt-45 pb-10">
+      <div className="max-w-10/12 mx-auto overflow-hidden">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row lg:justify-between gap-6 mb-8">
           <div className="flex gap-4">
@@ -61,7 +61,7 @@ export const FundDetails = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 lg:gap-8">
-            <Card className="py-3 rounded-xs text-center lg:text-left border-none">
+            <Card className="py-3 rounded-xs border-none">
               <CardContent>
                 <div className="flex justify-between items-center gap-20">
                   <div className="flex flex-col gap-2.5">
@@ -86,7 +86,7 @@ export const FundDetails = () => {
                 </div>
               </CardContent>
             </Card>
-            <Card className="py-3 rounded-xs text-center lg:text-left border-none">
+            <Card className="py-3 rounded-xs border-none">
               <CardContent>
                 <div className="flex justify-between items-center gap-20">
                   <div className="flex flex-col gap-2.5">
@@ -115,11 +115,11 @@ export const FundDetails = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col justify-center items-center xl:flex-row gap-8 py-15">
+        <div className="flex flex-col justify-center items-center xl:flex-row gap-20 md:gap-8 md:py-15">
           {/* Left Section - Gauge and Metrics */}
           <div className="flex-1">
             {/* Gauge Chart */}
-            <div className="flex flex-col ml-25">
+            <div className="flex-col md:ml-25 hidden md:flex">
               <Pentagon
                 pointTexts={[
                   <div key={"1"} className="flex gap-1">
@@ -145,7 +145,7 @@ export const FundDetails = () => {
                 ]}
                 size={475}
               >
-                <div className="w-[475px]">
+                <div className="md:w-[475px]">
                   <GaugeChart />
                   <div className="w-full">
                     <div className="flex justify-center items-center gap-2 px-3 py-1 rounded-full">
@@ -158,10 +158,24 @@ export const FundDetails = () => {
                 </div>
               </Pentagon>
             </div>
+
+            <div className="flex flex-col md:ml-25 md:hidden">
+              <div className="w-[350px] md:w-[475px]">
+                <GaugeChart />
+                <div className="w-full">
+                  <div className="flex justify-center items-center gap-2 px-3 py-1 rounded-full">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <span className="text-xs">
+                      This Fund has Moderately High risk
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Section - Investment Panel */}
-          <div className="w-4/12">
+          <div className="md:w-4/12">
             <Card className="bg-background border-none">
               <CardContent>
                 <div className="flex flex-col gap-5">

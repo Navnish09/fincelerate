@@ -11,12 +11,12 @@ import { graphic } from "echarts/core";
 
 export const SchemDetails = () => {
   return (
-    <div className="py-25">
+    <div className="py-16 md:py-25">
       <div className="max-w-10/12 mx-auto">
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-0 md:gap-10">
           {/* Header Section */}
           <div className="flex justify-center">
-            <div className="flex flex-col gap-5 justify-center items-center w-2/5 text-center">
+            <div className="flex flex-col gap-5 justify-center items-center md:w-2/5 text-center">
               <TypographyH1>Scheme Details</TypographyH1>
               <TypographyP className="text-secondary2">
                 Compare key fund metrics, including performance, risks and
@@ -27,14 +27,14 @@ export const SchemDetails = () => {
           </div>
 
           {/* Content Section */}
-          <div className="flex justify-between items-center gap-20">
-            <div className="grow h-[600px]">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-20">
+            <div className="md:grow h-[500px] md:h-[600px] w-full md:w-auto">
               <EChart
                 option={{
                   legend: {
                     // data: ["Fund", "Benchmark", "Caregory Average"],
                     bottom: 0,
-                    itemGap: 50,
+                    itemGap: 20,
                     textStyle: {
                       color: "#fff",
                       fontSize: 12,
@@ -55,11 +55,19 @@ export const SchemDetails = () => {
                   yAxis: {
                     max: 100,
                     type: "value",
+                    interval: 10,
+
                     axisLabel: {
                       formatter: "{value}%",
                     },
                     splitLine: {
-                      show: false,
+                      show: true,
+                      lineStyle: {
+                        color: "#111",
+                      },
+                    },
+                    axisTick: {
+                      show: true,
                     },
                   },
                   series: [
@@ -176,19 +184,19 @@ export const SchemDetails = () => {
                 ]}
               />
             </div>
-            <div className="basis-2/5">
+            <div className="w-full md:w-auto basis-2/5">
               <Card className="border-none">
                 <CardContent>
-                  <div className="flex gap-5 border-b py-6">
-                    <TypographySmall className="basis-1/4 text-muted-foreground">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 border-b py-4 md:py-6">
+                    <TypographySmall className="md:basis-1/4 text-muted-foreground">
                       Exense Ratio :
                     </TypographySmall>
                     <TypographySmall className="font-bold">
                       <span className="text-success">1.2%</span>
                     </TypographySmall>
                   </div>
-                  <div className="flex gap-5 border-b py-6">
-                    <TypographySmall className="basis-1/4 text-muted-foreground">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 border-b py-4 md:py-6">
+                    <TypographySmall className="md:basis-1/4 text-muted-foreground">
                       Exit Load :
                     </TypographySmall>
                     <TypographySmall className="font-bold">
@@ -196,40 +204,40 @@ export const SchemDetails = () => {
                       before 365 days
                     </TypographySmall>
                   </div>
-                  <div className="flex gap-5 border-b py-6">
-                    <TypographySmall className="basis-1/4 text-muted-foreground">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 border-b py-4 md:py-6">
+                    <TypographySmall className="md:basis-1/4 text-muted-foreground">
                       AUM (Fund Size) :
                     </TypographySmall>
                     <TypographySmall className="font-bold">
                       <span className="text-success">₹37,319 Crs</span>
                     </TypographySmall>
                   </div>
-                  <div className="flex gap-5 border-b py-6">
-                    <TypographySmall className="basis-1/4 text-muted-foreground">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 border-b py-4 md:py-6">
+                    <TypographySmall className="md:basis-1/4 text-muted-foreground">
                       Type of Fund :
                     </TypographySmall>
                     <TypographySmall className="font-bold">
                       Open Ended(no locking)
                     </TypographySmall>
                   </div>
-                  <div className="flex gap-5 border-b py-6">
-                    <TypographySmall className="basis-1/4 text-muted-foreground">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 border-b py-4 md:py-6">
+                    <TypographySmall className="md:basis-1/4 text-muted-foreground">
                       Age :
                     </TypographySmall>
                     <TypographySmall className="font-bold">
                       10 yrs 10 m Since Jan 01, 2013
                     </TypographySmall>
                   </div>
-                  <div className="flex gap-5 border-b py-6">
-                    <TypographySmall className="basis-1/4 text-muted-foreground">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 border-b py-4 md:py-6">
+                    <TypographySmall className="md:basis-1/4 text-muted-foreground">
                       Fund Manager :
                     </TypographySmall>
                     <TypographySmall className="font-bold">
                       Deependra Sahu
                     </TypographySmall>
                   </div>
-                  <div className="flex gap-5 py-6">
-                    <TypographySmall className="basis-1/4 text-muted-foreground">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 py-6">
+                    <TypographySmall className="md:basis-1/4 text-muted-foreground">
                       Bench Mark :
                     </TypographySmall>
                     <TypographySmall className="font-bold">

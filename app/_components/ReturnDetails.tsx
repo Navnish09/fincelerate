@@ -28,12 +28,12 @@ const NegativePositiveText = ({
 };
 export const ReturnDetails = () => {
   return (
-    <div className="bg-card/30 py-25">
+    <div className="bg-card/30 py-16 md:py-25">
       <div className="max-w-10/12 mx-auto">
         <div className="flex flex-col gap-10">
           {/* Header Section */}
           <div className="flex justify-center">
-            <div className="flex flex-col gap-5 justify-center items-center w-2/5 text-center">
+            <div className="flex flex-col gap-5 justify-center items-center md:w-2/5 text-center">
               <TypographyH1>Returns</TypographyH1>
               <TypographyP className="text-secondary2">
                 Track your investment growth with real-time returns.
@@ -43,8 +43,8 @@ export const ReturnDetails = () => {
 
           {/* Content Section */}
           <div className="">
-            <Tabs defaultValue="sip" className="flex flex-col gap-10">
-              <div className="w-3/9 m-auto justify-center flex">
+            <Tabs defaultValue="lumpsum" className="flex flex-col gap-10">
+              <div className="w-full md:w-3/9 m-auto justify-center flex">
                 <TabsList className="w-full h-15 rounded-full">
                   <TabsTrigger
                     value="lumpsum"

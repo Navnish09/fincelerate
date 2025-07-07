@@ -93,6 +93,7 @@ export const EChart = ({
 
     // Set Echart options and settings
     chart?.setOption(option, {
+      notMerge: true,
       ...settings,
       // Not merge is to always creating new components of the chart on rerenders to use the updated options
       // For reference:- https://echarts.apache.org/en/api.html#echartsInstance.setOption
